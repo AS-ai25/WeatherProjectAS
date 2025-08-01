@@ -225,6 +225,9 @@ data = res.json()
 # Create DataFrame from daily weather data
 df = pd.DataFrame(data["daily"])
 df["time"] = pd.to_datetime(df["time"])
+if units == "imperial":
+    df['temperature_2m_max'] = df['temperature_2m_max'] * 9 / 5 + 32
+    df['temperature_2m_min'] = df['temperature_2m_min'] * 9 / 5 + 32
 
 # Create copies for monthly and yearly analyses
 df_m = df
@@ -244,13 +247,13 @@ fig = make_subplots(specs=[[{"secondary_y": True}]])
 
 # Add max temperature line plot (left y-axis)
 fig.add_trace(
-    go.Scatter(x=df["time"], y=df["temperature_2m_max"], name="Max Temp (°C)", mode="lines+markers"),
+    go.Scatter(x=df["time"], y=df["temperature_2m_max"], name=f"Max Temp (°{temp_sym})", mode="lines+markers"),
     secondary_y=False,
 )
 
 # Add min temperature line plot (left y-axis)
 fig.add_trace(
-    go.Scatter(x=df["time"], y=df["temperature_2m_min"], name="Min Temp (°C)", mode="lines+markers"),
+    go.Scatter(x=df["time"], y=df["temperature_2m_min"], name="Min Temp (°{temp_sym})", mode="lines+markers"),
     secondary_y=False,
 )
 
@@ -268,7 +271,7 @@ fig.update_layout(
 )
 
 # Set y-axis titles for temperature and rainfall
-fig.update_yaxes(title_text="Temperature (°C)", secondary_y=False)
+fig.update_yaxes(title_text="Temperature (°{temp_sym})", secondary_y=False)
 fig.update_yaxes(title_text="Rainfall (mm)", secondary_y=True)
 
 # Display the Plotly figure in Streamlit with container width
