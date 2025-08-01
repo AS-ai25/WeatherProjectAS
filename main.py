@@ -1,38 +1,71 @@
 # https://bulk.openweathermap.org/sample/city.list.json.gz cities list data
 
+
 import json
 import pandas as pd
-import streamlit as st
 import pycountry
 import requests
+import datetime as dt
+import os
+
+
+SETTINGS_FILE = "settings.json"
+#deafolt user parameters
+def load_settings():
+    if os.path.exists(SETTINGS_FILE):
+        with open(SETTINGS_FILE, 'r') as f:
+            return json.load(f)
+    else:
+        return {"city": "Jerusalem,Israel", "units": "metric"}
+
+#save last choose parapeters
+def save_settings(settings):
+    with open(SETTINGS_FILE, 'w') as f:
+        json.dump(settings, f)
+
+#show deafolt parameters
+settings = load_settings()
+print(f"\nDefault city: {settings['city']}")
+print(f"Default units: {settings['units']}")
+
+#choose new parameters
+city = input("Enter city (leave empty for default): ").strip()
+units = input("Enter units (metric/imperial, leave empty for default): ").strip()
+if city:
+    settings["city"] = city
+if units in ["metric", "imperial"]:
+    settings["units"] = units
+save_settings(settings)
+
 
 with open("DATA_BASE/city.list.json", "r", encoding="utf-8") as f:
     city_data = json.load(f)
-
 city_data_table = pd.DataFrame(city_data)
+#print(city_data_table.head())
 
-
-def get_country_name(city_code):
-    country = pycountry.countries.get(alpha_2=city_code.upper())
+#add complate country name base country code
+def get_country_name(country_code):
+    country = pycountry.countries.get(alpha_2=country_code.upper())
     return country.name if country else "Unknown"
 
-
+#add columns country full name and coty_finder that included City name, Country full name
 city_data_table['country_fn'] = city_data_table['country'].apply(get_country_name)
 city_data_table['city_finder'] = city_data_table.apply(lambda row: row['name'] + ',' + row['country_fn'], axis=1)
 # city_data_table['city_finder'] = city_data_table['name']+','+city_data_table['country_fn']
 city_data_table['lat'] = city_data_table['coord'].apply(lambda x: x['lat'])
 city_data_table['lon'] = city_data_table['coord'].apply(lambda x: x['lon'])
-city_data_table.dropna()
+city_data_table = city_data_table.dropna()
+city_data_table = city_data_table.drop_duplicates(subset='city_finder')
 
 # print(city_data_table['lat']    ,city_data_table['lon'])
 # print(city_data_table.dtypes)
 print(city_data_table.columns)
-# print(city_data_table.coord)
-print(city_data_table)
+#print(city_data_table.head())
+print(city_data_table[city_data_table.name == 'Jerusalem'])
 # print(city_data[200:202:])
 
+#get weather to specific city
 KEY_W = 'abb622fc56c5a7f79bb4539ab03cc961'  # OpenWeatherMap
-
 
 def get_weather(lat, lon, KEY):
     url = "https://api.openweathermap.org/data/2.5/weather"
@@ -40,24 +73,27 @@ def get_weather(lat, lon, KEY):
         "lat": lat,
         "lon": lon,
         "appid": KEY,
-        "units": "metric"
+        "units": settings["units"]
     }
     res = requests.get(url, params=params)
     if res.status_code == 200:
         return res.json()
     return None
 
-
-selected_city = city_data_table[city_data_table.city_finder == 'Tel Aviv,Israel']
-
+print(city)
+selected_city = city_data_table[city_data_table.city_finder == settings["city"]]
+#selected_city = city_data_table[city_data_table.city_finder == 'Jerusalem,Israel']
 weather = get_weather(selected_city['lat'], selected_city['lon'], KEY_W)
 
+#weather information from API weather
 coord_lon = weather['coord']['lon']
 coord_lat = weather['coord']['lat']
 weather_main = weather['weather'][0]['main']
 weather_description = weather['weather'][0]['description']
 weather_code = icon = weather['weather'][0]['icon']
 main_temp = weather['main']['temp']
+if settings["units"] == 'metric':temp_sym='C'
+if settings["units"] == 'imperial':temp_sym='F'
 main_temp_max = weather['main']['temp_max']
 main_temp_min = weather['main']['temp_min']
 wind_speed = weather['wind']['speed']
@@ -65,87 +101,158 @@ clouds_all = weather['clouds']['all']
 city_time = weather['dt']
 city_timezone = weather['timezone']
 
+#get weather icon from the web
 icon_code = weather['weather'][0]['icon']
 url_icon = f"https://openweathermap.org/img/wn/{weather_code}@2x.png"
 # st.image(url_icon, caption="Weather Icon"
 
-KEY_ATR = "74fb904f381e44fca6a70c993515d53d"
-import requests
+#get actual chosen city time
+actual_cite_time = dt.datetime.now(dt.timezone.utc)+dt.timedelta(seconds=city_timezone)
+actual_cite_time = actual_cite_time.strftime("%H:%M:%S %A %d-%m-%Y ")
+print(f"The time now in {selected_city.city_finder.iloc[0]} is {actual_cite_time} {main_temp} {temp_sym}")
 
 
-def fetch_attractions(lat, lon, key_atr, radius=2000):
-    url = "https://api.geoapify.com/v2/places"
-    categories = [
-        # Tourism
-        "tourism.attraction",
-        "tourism.attraction.artwork",
-        "tourism.attraction.viewpoint",
-        "tourism.attraction.fountain",
-        "tourism.attraction.clock",
-        "tourism.sights.castle",
-        "tourism.sights.memorial",
-        "tourism.sights.memorial.tomb",
-        "tourism.sights.memorial.monument",
-        "tourism.sights.city_hall",
-        "tourism.sights.bridge",
-        "tourism.sights.archaeological_site",
-        "tourism.sights.windmill",
-        "tourism.sights.tower",
-        "tourism.sights.lighthouse",
-        "tourism.information.office",
-        "tourism.information.map",
-
-        # Entertainment
+weather_to_categories = {
+    "Thunderstorm": [
         "entertainment.museum",
-        "entertainment.zoo",
+        "entertainment.cinema",
+        "entertainment.planetarium",
+        "leisure.spa.sauna",
+        "leisure.spa.public_bath",
+        "heritage.unesco"
+    ],
+    "Drizzle": [
+        "entertainment.museum",
+        "entertainment.cinema",
+        "leisure.spa.public_bath",
+        "leisure.spa.sauna",
+        "entertainment.planetarium",
+        "heritage.unesco"
+    ],
+    "Rain": [
+        "entertainment.museum",
         "entertainment.cinema",
         "entertainment.aquarium",
         "entertainment.planetarium",
-        "entertainment.bowling_alley",
+        "leisure.spa.public_bath",
+        "leisure.spa.sauna",
+        "heritage.unesco"
+    ],
+    "Snow": [
+        "natural.mountain.glacier",
+        "natural.mountain.peak",
         "entertainment.theme_park",
-        "entertainment.water_park",
-        "entertainment.escape_game",
-        "entertainment.amusement_arcade",
+        "leisure.spa.public_bath",
+        "leisure.spa.sauna"
+    ],
+    "Mist": [
+        "entertainment.museum",
+        "entertainment.cinema",
+        "heritage.unesco",
+        "entertainment.culture.theatre"
+    ],
+    "Smoke": [
+        "entertainment.museum",
+        "entertainment.cinema",
+        "heritage.unesco"
+    ],
+    "Haze": [
+        "entertainment.museum",
+        "entertainment.cinema",
+        "heritage.unesco"
+    ],
+    "Dust": [
+        "entertainment.museum",
+        "entertainment.cinema",
+        "heritage.unesco"
+    ],
+    "Fog": [
+        "entertainment.museum",
+        "entertainment.cinema",
+        "heritage.unesco"
+    ],
+    "Sand": [
+        "entertainment.museum",
+        "entertainment.cinema",
+        "heritage.unesco"
+    ],
+    "Ash": [
+        "entertainment.museum",
+        "entertainment.cinema",
+        "heritage.unesco"
+    ],
+    "Squall": [
+        "entertainment.museum",
+        "entertainment.cinema",
+        "leisure.spa.sauna",
+        "heritage.unesco"
+    ],
+    "Tornado": [
+        "entertainment.museum",
+        "entertainment.cinema",
+        "heritage.unesco"
+    ],
+    "Clear": [
+        "tourism.attraction",
+        "tourism.attraction.viewpoint",
+        "tourism.attraction.fountain",
+        "tourism.attraction.artwork",
+        "tourism.sights.castle",
+        "tourism.sights.bridge",
+        "tourism.sights.memorial.monument",
+        "tourism.sights.city_hall",
+        "tourism.sights.tower",
+        "tourism.sights.lighthouse",
+        "tourism.sights.archaeological_site",
+        "tourism.sights.windmill",
+        "entertainment.zoo",
+        "entertainment.activity_park",
         "entertainment.activity_park.trampoline",
         "entertainment.activity_park.climbing",
-        "entertainment.activity_park",
-        "entertainment.culture.theatre",
-        "entertainment.culture.arts_centre",
-        "entertainment.culture.gallery",
-
-        # Leisure
+        "entertainment.water_park",
+        "natural.forest",
+        "natural.mountain.peak",
+        "natural.water.spring",
+        "natural.water.hot_spring",
+        "natural.water.geyser",
+        "natural.water.sea",
         "leisure.park",
         "leisure.park.garden",
-        "leisure.park.nature_reserve",
         "leisure.playground",
         "leisure.picnic.picnic_site",
         "leisure.picnic.picnic_table",
         "leisure.picnic.bbq",
-        "leisure.spa.public_bath",
-        "leisure.spa.sauna",
-
-        # Natural
-        "natural.forest",
-        "natural.water.sea",
-        "natural.water.spring",
-        "natural.water.reef",
-        "natural.water.hot_spring",
-        "natural.water.geyser",
-        "natural.mountain.peak",
-        "natural.mountain.glacier",
-        "natural.mountain.cliff",
-        "natural.mountain.rock",
-        "natural.mountain.cave_entrance",
-        "natural.sand.dune",
-        "natural.protected_area",
-
-        # Heritage
+        "heritage.unesco"
+    ],
+    "Clouds": [
+        "tourism.attraction",
+        "tourism.sights.castle",
+        "entertainment.museum",
+        "entertainment.cinema",
+        "entertainment.culture.gallery",
+        "leisure.park",
         "heritage.unesco"
     ]
+}
 
 
+def get_trip_recommendations(weather_type):
+    return weather_to_categories.get(weather_type, [])
+
+#def get_trip_descriptions(categories):
+#    return [category_descriptions.get(cat, cat) for cat in categories]
+
+weather_now = weather_main
+recommended_categories = get_trip_recommendations(weather_now)
+#print(recommended_categories)
+
+
+KEY_ATR = "74fb904f381e44fca6a70c993515d53d"
+
+def fetch_attractions(lat, lon, key_atr,categories, radius=2000):
+    url = "https://api.geoapify.com/v2/places"
     params = {
-        "categories": categories,
+        "categories": ",".join(categories),
         "filter": f"circle:{lon},{lat},{radius}",
         "limit": 20,
         "apiKey": key_atr
@@ -170,25 +277,21 @@ def fetch_attractions(lat, lon, key_atr, radius=2000):
         return []
 
 
-weather_map = {
-    "clear": ["park", "beach", "tourism.sightseeing", "hiking"],
-    "rain": ["museum", "cafe", "mall", "indoor"],
-    "clouds": ["park", "museum", "mall"],
-    "snow": ["ski", "indoor"],
-    "thunderstorm": ["indoor", "museum", "mall"],
-}
 
 
-def filter_attractions_by_weather(attractions, weather_main):
-    allowed = weather_map.get(weather_main.lower(), [])
-    return [a for a in attractions if any(tag in a["type"] for tag in allowed)]
+#def filter_attractions_by_weather(attractions, weather_main):
+#    allowed = weather_map.get(weather_main.lower(), [])
+#    return [a for a in attractions if any(tag in a["type"] for tag in allowed)]
 
 
-atr_city = pd.DataFrame(fetch_attractions(coord_lat, coord_lon, KEY_ATR,radius=2000))
-print(atr_city.groupby('type')['type'].value_counts())#for a in atr :print(a['name'], a['type'])
-#good = filter_attractions_by_weather(atr, wm)
-#st.markdown("### Attractions For This Weather:")
-#for a in atr:#good:
+atr_city = pd.DataFrame(fetch_attractions(coord_lat, coord_lon, KEY_ATR, recommended_categories, radius=2000))
+for idx, row in atr_city.iterrows():
+    print(row['name'],row['lon'])
+print(weather_main)
+
+# good = filter_attractions_by_weather(atr, wm)
+# st.markdown("### Attractions For This Weather:")
+# for a in atr:#good:
 #    st.write(f"- {a['name']} ({a['type']})")
 
 '''
@@ -378,6 +481,28 @@ if weather:
         st.write(f"- {a['name']} ({a['type']})")
 else:
     st.error("Weather data not available.")
+    
+    
+    ---------------------
+    
+    
+    weather_main_types = [
+    "Thunderstorm",
+    "Drizzle",
+    "Rain",
+    "Snow",
+    "Mist",
+    "Smoke",
+    "Haze",
+    "Dust",
+    "Fog",
+    "Sand",
+    "Ash",
+    "Squall",
+    "Tornado",
+    "Clear",
+    "Clouds"
+]
 
 """""
 '''

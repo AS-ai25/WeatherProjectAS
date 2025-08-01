@@ -1,0 +1,1085 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_a57174cfe8b4e469e3eaa2ed895a4780 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_a57174cfe8b4e469e3eaa2ed895a4780" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_a57174cfe8b4e469e3eaa2ed895a4780 = L.map(
+                "map_a57174cfe8b4e469e3eaa2ed895a4780",
+                {
+                    center: [25.7906, -80.1301],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_b503776c53c991b648f1f94d2757acc3 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_b503776c53c991b648f1f94d2757acc3.addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var marker_4f5b1e21475599eb62f0bcaf932aeac2 = L.marker(
+                [25.7906, -80.1301],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+        var popup_40f01b79da7c71656e191b300cd1a758 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9cc52bcf3acff36c791fefce94c124ce = $(`<div id="html_9cc52bcf3acff36c791fefce94c124ce" style="width: 100.0%; height: 100.0%;">Miami Beach, US</div>`)[0];
+                popup_40f01b79da7c71656e191b300cd1a758.setContent(html_9cc52bcf3acff36c791fefce94c124ce);
+            
+        
+
+        marker_4f5b1e21475599eb62f0bcaf932aeac2.bindPopup(popup_40f01b79da7c71656e191b300cd1a758)
+        ;
+
+        
+    
+    
+            var marker_9ff850006913660558ae0a2dcd1a0910 = L.marker(
+                [25.7846592, -80.1374631131022],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_5d3b9aeba015e3266bc010d3d8147018 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_480da100307ef14b42f54d8db8bc8d2d = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_47a0c1941c7ac5cb473494bf87b57dd5 = $(`<div id="html_47a0c1941c7ac5cb473494bf87b57dd5" style="width: 100.0%; height: 100.0%;">Flamingo Park</div>`)[0];
+                popup_480da100307ef14b42f54d8db8bc8d2d.setContent(html_47a0c1941c7ac5cb473494bf87b57dd5);
+            
+        
+
+        marker_9ff850006913660558ae0a2dcd1a0910.bindPopup(popup_480da100307ef14b42f54d8db8bc8d2d)
+        ;
+
+        
+    
+    
+            marker_9ff850006913660558ae0a2dcd1a0910.bindTooltip(
+                `<div>
+                     Flamingo Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9ff850006913660558ae0a2dcd1a0910.setIcon(icon_5d3b9aeba015e3266bc010d3d8147018);
+            
+    
+            var marker_fd1e1533844c3373c67970e3b2db36d0 = L.marker(
+                [25.782746500000002, -80.13809092430992],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_edb6154d2ca4c219d276b4677076cc99 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a91977aa5a5db7a380d1dd5312a680ca = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_3da0dbd2bd2fb7eaa99da4da74772bce = $(`<div id="html_3da0dbd2bd2fb7eaa99da4da74772bce" style="width: 100.0%; height: 100.0%;">Flamingo Park Pool</div>`)[0];
+                popup_a91977aa5a5db7a380d1dd5312a680ca.setContent(html_3da0dbd2bd2fb7eaa99da4da74772bce);
+            
+        
+
+        marker_fd1e1533844c3373c67970e3b2db36d0.bindPopup(popup_a91977aa5a5db7a380d1dd5312a680ca)
+        ;
+
+        
+    
+    
+            marker_fd1e1533844c3373c67970e3b2db36d0.bindTooltip(
+                `<div>
+                     Flamingo Park Pool
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fd1e1533844c3373c67970e3b2db36d0.setIcon(icon_edb6154d2ca4c219d276b4677076cc99);
+            
+    
+            var marker_71d8190a467c8982562e76b2e3c680a4 = L.marker(
+                [25.780613250000002, -80.12989333373417],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_d1de936641d7bcc2e44b6dc4577fe704 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cd9b89a37ff92f076559cafe6afbf9c5 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_fa4d42a5466866d39a15b3f123b56d38 = $(`<div id="html_fa4d42a5466866d39a15b3f123b56d38" style="width: 100.0%; height: 100.0%;">Lummus Park</div>`)[0];
+                popup_cd9b89a37ff92f076559cafe6afbf9c5.setContent(html_fa4d42a5466866d39a15b3f123b56d38);
+            
+        
+
+        marker_71d8190a467c8982562e76b2e3c680a4.bindPopup(popup_cd9b89a37ff92f076559cafe6afbf9c5)
+        ;
+
+        
+    
+    
+            marker_71d8190a467c8982562e76b2e3c680a4.bindTooltip(
+                `<div>
+                     Lummus Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_71d8190a467c8982562e76b2e3c680a4.setIcon(icon_d1de936641d7bcc2e44b6dc4577fe704);
+            
+    
+            var marker_871d01b7d40e07a722e2c55d70d46b7f = L.marker(
+                [25.796999399999997, -80.12884476974577],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_f1e1b01ace89393a8c1a32c45b0a76d2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_acfb9e9c1396bb5aa55715ca9a2705b4 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_95687781b5ca54541fd3ecd98bab0391 = $(`<div id="html_95687781b5ca54541fd3ecd98bab0391" style="width: 100.0%; height: 100.0%;">Collins Park</div>`)[0];
+                popup_acfb9e9c1396bb5aa55715ca9a2705b4.setContent(html_95687781b5ca54541fd3ecd98bab0391);
+            
+        
+
+        marker_871d01b7d40e07a722e2c55d70d46b7f.bindPopup(popup_acfb9e9c1396bb5aa55715ca9a2705b4)
+        ;
+
+        
+    
+    
+            marker_871d01b7d40e07a722e2c55d70d46b7f.bindTooltip(
+                `<div>
+                     Collins Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_871d01b7d40e07a722e2c55d70d46b7f.setIcon(icon_f1e1b01ace89393a8c1a32c45b0a76d2);
+            
+    
+            var marker_8a49e70d3355913506337095a44dcf3d = L.marker(
+                [25.7967061, -80.1293909],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_409099822cd652fb5c35fcbec15ec17b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7d744aa8bb4b58225ddc4c38032c9763 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_87496ef89d0a25d3404d3c2ef03f4c3e = $(`<div id="html_87496ef89d0a25d3404d3c2ef03f4c3e" style="width: 100.0%; height: 100.0%;">José Martí</div>`)[0];
+                popup_7d744aa8bb4b58225ddc4c38032c9763.setContent(html_87496ef89d0a25d3404d3c2ef03f4c3e);
+            
+        
+
+        marker_8a49e70d3355913506337095a44dcf3d.bindPopup(popup_7d744aa8bb4b58225ddc4c38032c9763)
+        ;
+
+        
+    
+    
+            marker_8a49e70d3355913506337095a44dcf3d.bindTooltip(
+                `<div>
+                     José Martí
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8a49e70d3355913506337095a44dcf3d.setIcon(icon_409099822cd652fb5c35fcbec15ec17b);
+            
+    
+            var marker_0cc67624d5749afc3a31dec1b0f90e8a = L.marker(
+                [25.795665749999998, -80.13552129770171],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_3637007392ac7abcf54e1cdfa89dd4b4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fe10cf896bf85efccbc010629d749442 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_bda35db51df2a351e3262b903d563f04 = $(`<div id="html_bda35db51df2a351e3262b903d563f04" style="width: 100.0%; height: 100.0%;">Miami Beach Botanical Garden</div>`)[0];
+                popup_fe10cf896bf85efccbc010629d749442.setContent(html_bda35db51df2a351e3262b903d563f04);
+            
+        
+
+        marker_0cc67624d5749afc3a31dec1b0f90e8a.bindPopup(popup_fe10cf896bf85efccbc010629d749442)
+        ;
+
+        
+    
+    
+            marker_0cc67624d5749afc3a31dec1b0f90e8a.bindTooltip(
+                `<div>
+                     Miami Beach Botanical Garden
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0cc67624d5749afc3a31dec1b0f90e8a.setIcon(icon_3637007392ac7abcf54e1cdfa89dd4b4);
+            
+    
+            var marker_c07cea384d90dc8c6591a5dda3738d7d = L.marker(
+                [25.795450600000002, -80.13622427844867],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_ad44ade731c7abd279865606347bfd2b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_85a967e748320ffdcc6be5cb2147f612 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_f0ff8ac03a760b9f614c995774d311b9 = $(`<div id="html_f0ff8ac03a760b9f614c995774d311b9" style="width: 100.0%; height: 100.0%;">Holocaust Memorial</div>`)[0];
+                popup_85a967e748320ffdcc6be5cb2147f612.setContent(html_f0ff8ac03a760b9f614c995774d311b9);
+            
+        
+
+        marker_c07cea384d90dc8c6591a5dda3738d7d.bindPopup(popup_85a967e748320ffdcc6be5cb2147f612)
+        ;
+
+        
+    
+    
+            marker_c07cea384d90dc8c6591a5dda3738d7d.bindTooltip(
+                `<div>
+                     Holocaust Memorial
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c07cea384d90dc8c6591a5dda3738d7d.setIcon(icon_ad44ade731c7abd279865606347bfd2b);
+            
+    
+            var marker_f2f354ba07f223df2d1e890156c6f8cf = L.marker(
+                [25.78322035, -80.1379562780658],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_ef52c71b9a33b77cad4258694b02f4e5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_672c58c5caa8a860f6bda492fe7720d7 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_120a936b066244082328d8bb127b250d = $(`<div id="html_120a936b066244082328d8bb127b250d" style="width: 100.0%; height: 100.0%;">Flamingo Park Playground</div>`)[0];
+                popup_672c58c5caa8a860f6bda492fe7720d7.setContent(html_120a936b066244082328d8bb127b250d);
+            
+        
+
+        marker_f2f354ba07f223df2d1e890156c6f8cf.bindPopup(popup_672c58c5caa8a860f6bda492fe7720d7)
+        ;
+
+        
+    
+    
+            marker_f2f354ba07f223df2d1e890156c6f8cf.bindTooltip(
+                `<div>
+                     Flamingo Park Playground
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f2f354ba07f223df2d1e890156c6f8cf.setIcon(icon_ef52c71b9a33b77cad4258694b02f4e5);
+            
+    
+            var marker_98ebf329a8440444be168c28cc64e5cb = L.marker(
+                [25.7764922, -80.14141732665493],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_d0e561d50b72687dce81ec5d4ac9a016 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1d2d317318727005efb1f1383fbd8ea4 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_8142663d43d3ab4da803e9d6bfd8a13a = $(`<div id="html_8142663d43d3ab4da803e9d6bfd8a13a" style="width: 100.0%; height: 100.0%;">Canopy Park</div>`)[0];
+                popup_1d2d317318727005efb1f1383fbd8ea4.setContent(html_8142663d43d3ab4da803e9d6bfd8a13a);
+            
+        
+
+        marker_98ebf329a8440444be168c28cc64e5cb.bindPopup(popup_1d2d317318727005efb1f1383fbd8ea4)
+        ;
+
+        
+    
+    
+            marker_98ebf329a8440444be168c28cc64e5cb.bindTooltip(
+                `<div>
+                     Canopy Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_98ebf329a8440444be168c28cc64e5cb.setIcon(icon_d0e561d50b72687dce81ec5d4ac9a016);
+            
+    
+            var marker_24bdb0b5e8abe9de1ece47af796ebc19 = L.marker(
+                [25.7744291, -80.1332415],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_d36061d4f2da1a58f47ced063adf9a15 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bd317e7de009a8c1500b10591b07a8a4 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_52645c1f64af2cbc0e6a979c5fcbbc1d = $(`<div id="html_52645c1f64af2cbc0e6a979c5fcbbc1d" style="width: 100.0%; height: 100.0%;">South Beach</div>`)[0];
+                popup_bd317e7de009a8c1500b10591b07a8a4.setContent(html_52645c1f64af2cbc0e6a979c5fcbbc1d);
+            
+        
+
+        marker_24bdb0b5e8abe9de1ece47af796ebc19.bindPopup(popup_bd317e7de009a8c1500b10591b07a8a4)
+        ;
+
+        
+    
+    
+            marker_24bdb0b5e8abe9de1ece47af796ebc19.bindTooltip(
+                `<div>
+                     South Beach
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_24bdb0b5e8abe9de1ece47af796ebc19.setIcon(icon_d36061d4f2da1a58f47ced063adf9a15);
+            
+    
+            var marker_a466bed5183ee262b1b857d38c7979fc = L.marker(
+                [25.777193349999997, -80.12930157264037],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_438f6aa1f054f7666181835fdd999e3c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8990eb65286158d72021045beaae8093 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_7a7ffc0020bdc05dd1c70ebad930a812 = $(`<div id="html_7a7ffc0020bdc05dd1c70ebad930a812" style="width: 100.0%; height: 100.0%;">Miami Beach</div>`)[0];
+                popup_8990eb65286158d72021045beaae8093.setContent(html_7a7ffc0020bdc05dd1c70ebad930a812);
+            
+        
+
+        marker_a466bed5183ee262b1b857d38c7979fc.bindPopup(popup_8990eb65286158d72021045beaae8093)
+        ;
+
+        
+    
+    
+            marker_a466bed5183ee262b1b857d38c7979fc.bindTooltip(
+                `<div>
+                     Miami Beach
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a466bed5183ee262b1b857d38c7979fc.setIcon(icon_438f6aa1f054f7666181835fdd999e3c);
+            
+    
+            var marker_410dc6b3ef3894dae418825204aaa668 = L.marker(
+                [25.79954085, -80.12504645164981],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_28287c72282230a40f5a693a9cc48893 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d7753459c823e9b1e1692bc949928705 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_9115755ce0ef79bd9fe55fe9665b1d16 = $(`<div id="html_9115755ce0ef79bd9fe55fe9665b1d16" style="width: 100.0%; height: 100.0%;">Miami Beach</div>`)[0];
+                popup_d7753459c823e9b1e1692bc949928705.setContent(html_9115755ce0ef79bd9fe55fe9665b1d16);
+            
+        
+
+        marker_410dc6b3ef3894dae418825204aaa668.bindPopup(popup_d7753459c823e9b1e1692bc949928705)
+        ;
+
+        
+    
+    
+            marker_410dc6b3ef3894dae418825204aaa668.bindTooltip(
+                `<div>
+                     Miami Beach
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_410dc6b3ef3894dae418825204aaa668.setIcon(icon_28287c72282230a40f5a693a9cc48893);
+            
+    
+            var marker_ad46bbd7790144a03bced62760f7be2d = L.marker(
+                [25.7910635, -80.14810657872928],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_60d930aa1cd9fb42d7af417313478fd7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8b6e4d4b3f094128ba5e1e1062d6e412 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_e635751c9d4a6acd13aae59ccbb83e01 = $(`<div id="html_e635751c9d4a6acd13aae59ccbb83e01" style="width: 100.0%; height: 100.0%;">Belle Isle Park</div>`)[0];
+                popup_8b6e4d4b3f094128ba5e1e1062d6e412.setContent(html_e635751c9d4a6acd13aae59ccbb83e01);
+            
+        
+
+        marker_ad46bbd7790144a03bced62760f7be2d.bindPopup(popup_8b6e4d4b3f094128ba5e1e1062d6e412)
+        ;
+
+        
+    
+    
+            marker_ad46bbd7790144a03bced62760f7be2d.bindTooltip(
+                `<div>
+                     Belle Isle Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ad46bbd7790144a03bced62760f7be2d.setIcon(icon_60d930aa1cd9fb42d7af417313478fd7);
+            
+    
+            var marker_d10abc7ea38d681a9400c4ff151281ef = L.marker(
+                [25.792886799999998, -80.14478314788305],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_547a2242a65927d5dc8f8ff2576bd83d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e0575812d10811635aa480004d335c4f = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_7dc46965c79ad3cb1bfc9b1d4100f835 = $(`<div id="html_7dc46965c79ad3cb1bfc9b1d4100f835" style="width: 100.0%; height: 100.0%;">Maurice Gibb Memorial Park</div>`)[0];
+                popup_e0575812d10811635aa480004d335c4f.setContent(html_7dc46965c79ad3cb1bfc9b1d4100f835);
+            
+        
+
+        marker_d10abc7ea38d681a9400c4ff151281ef.bindPopup(popup_e0575812d10811635aa480004d335c4f)
+        ;
+
+        
+    
+    
+            marker_d10abc7ea38d681a9400c4ff151281ef.bindTooltip(
+                `<div>
+                     Maurice Gibb Memorial Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d10abc7ea38d681a9400c4ff151281ef.setIcon(icon_547a2242a65927d5dc8f8ff2576bd83d);
+            
+    
+            var marker_a08a4b5ab994a01bf3cf9182ad654faf = L.marker(
+                [25.7927683, -80.13538620900317],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_34fa4932728d9a5439713e2df3bee319 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_39d37a27320600b2ab5526b53f97165c = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_24911498b178fa85cf97bd6f5b767e26 = $(`<div id="html_24911498b178fa85cf97bd6f5b767e26" style="width: 100.0%; height: 100.0%;">Miami Beach City Hall</div>`)[0];
+                popup_39d37a27320600b2ab5526b53f97165c.setContent(html_24911498b178fa85cf97bd6f5b767e26);
+            
+        
+
+        marker_a08a4b5ab994a01bf3cf9182ad654faf.bindPopup(popup_39d37a27320600b2ab5526b53f97165c)
+        ;
+
+        
+    
+    
+            marker_a08a4b5ab994a01bf3cf9182ad654faf.bindTooltip(
+                `<div>
+                     Miami Beach City Hall
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a08a4b5ab994a01bf3cf9182ad654faf.setIcon(icon_34fa4932728d9a5439713e2df3bee319);
+            
+    
+            var marker_a7aa0e30818776761633dfabe47ee790 = L.marker(
+                [25.7916742, -80.13259121983754],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_faebe407d96f36659e30c2b50eeef6e0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b46f10276570137f85bb62bb267ddbdd = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_d79543f2a7509bc5e25fe0e9466a2e38 = $(`<div id="html_d79543f2a7509bc5e25fe0e9466a2e38" style="width: 100.0%; height: 100.0%;">Soundscape Park</div>`)[0];
+                popup_b46f10276570137f85bb62bb267ddbdd.setContent(html_d79543f2a7509bc5e25fe0e9466a2e38);
+            
+        
+
+        marker_a7aa0e30818776761633dfabe47ee790.bindPopup(popup_b46f10276570137f85bb62bb267ddbdd)
+        ;
+
+        
+    
+    
+            marker_a7aa0e30818776761633dfabe47ee790.bindTooltip(
+                `<div>
+                     Soundscape Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a7aa0e30818776761633dfabe47ee790.setIcon(icon_faebe407d96f36659e30c2b50eeef6e0);
+            
+    
+            var marker_7d5ea287f20d93d2e48613e822fe3bb9 = L.marker(
+                [25.79408725, -80.13581253232257],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_8bccd7815ea16cb8ac71f7142a2a9b17 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e06420c935a5b376909008930bad9635 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_0cefaddd76a3f3580760aa92f51f4a3d = $(`<div id="html_0cefaddd76a3f3580760aa92f51f4a3d" style="width: 100.0%; height: 100.0%;">Miami Beach Convention Center Park</div>`)[0];
+                popup_e06420c935a5b376909008930bad9635.setContent(html_0cefaddd76a3f3580760aa92f51f4a3d);
+            
+        
+
+        marker_7d5ea287f20d93d2e48613e822fe3bb9.bindPopup(popup_e06420c935a5b376909008930bad9635)
+        ;
+
+        
+    
+    
+            marker_7d5ea287f20d93d2e48613e822fe3bb9.bindTooltip(
+                `<div>
+                     Miami Beach Convention Center Park
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7d5ea287f20d93d2e48613e822fe3bb9.setIcon(icon_8bccd7815ea16cb8ac71f7142a2a9b17);
+            
+    
+            var marker_df79469269938f2f1db79287228d5324 = L.marker(
+                [25.7968532, -80.1290239],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_cf768c7f8a71786aed6afc1dcd5efef6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_96d37a13c6b0b9cb40e9024e08c9b152 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_00f67162f9a8296ed0a9e24be9ab5712 = $(`<div id="html_00f67162f9a8296ed0a9e24be9ab5712" style="width: 100.0%; height: 100.0%;">Tempest</div>`)[0];
+                popup_96d37a13c6b0b9cb40e9024e08c9b152.setContent(html_00f67162f9a8296ed0a9e24be9ab5712);
+            
+        
+
+        marker_df79469269938f2f1db79287228d5324.bindPopup(popup_96d37a13c6b0b9cb40e9024e08c9b152)
+        ;
+
+        
+    
+    
+            marker_df79469269938f2f1db79287228d5324.bindTooltip(
+                `<div>
+                     Tempest
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_df79469269938f2f1db79287228d5324.setIcon(icon_cf768c7f8a71786aed6afc1dcd5efef6);
+            
+    
+            var marker_f2b53c6fd4ddcfdbcb6ec0786f158dc7 = L.marker(
+                [25.7771447, -80.1310159],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_4e792f434581b033e6fc9e540f87f3b5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4adb2d63abf8405c1470fe5af183105c = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_5cf6d523e065a2a3608a61be81bf23f8 = $(`<div id="html_5cf6d523e065a2a3608a61be81bf23f8" style="width: 100.0%; height: 100.0%;">Bankje</div>`)[0];
+                popup_4adb2d63abf8405c1470fe5af183105c.setContent(html_5cf6d523e065a2a3608a61be81bf23f8);
+            
+        
+
+        marker_f2b53c6fd4ddcfdbcb6ec0786f158dc7.bindPopup(popup_4adb2d63abf8405c1470fe5af183105c)
+        ;
+
+        
+    
+    
+            marker_f2b53c6fd4ddcfdbcb6ec0786f158dc7.bindTooltip(
+                `<div>
+                     Bankje
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f2b53c6fd4ddcfdbcb6ec0786f158dc7.setIcon(icon_4e792f434581b033e6fc9e540f87f3b5);
+            
+    
+            var marker_bad362832d99a8bb86997123346a78e0 = L.marker(
+                [25.7918342, -80.1296838],
+                {
+}
+            ).addTo(map_a57174cfe8b4e469e3eaa2ed895a4780);
+        
+    
+            var icon_00fea555f52a3de613cbfe5b4338e0ed = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_73239eba7bff1b02369f038e79ccf99a = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_5ac27742c05b22fa8d959a22efa061f9 = $(`<div id="html_5ac27742c05b22fa8d959a22efa061f9" style="width: 100.0%; height: 100.0%;">Strength, 2018</div>`)[0];
+                popup_73239eba7bff1b02369f038e79ccf99a.setContent(html_5ac27742c05b22fa8d959a22efa061f9);
+            
+        
+
+        marker_bad362832d99a8bb86997123346a78e0.bindPopup(popup_73239eba7bff1b02369f038e79ccf99a)
+        ;
+
+        
+    
+    
+            marker_bad362832d99a8bb86997123346a78e0.bindTooltip(
+                `<div>
+                     Strength, 2018
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bad362832d99a8bb86997123346a78e0.setIcon(icon_00fea555f52a3de613cbfe5b4338e0ed);
+            
+</script>
+</html>

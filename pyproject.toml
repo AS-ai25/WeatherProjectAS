@@ -11,6 +11,12 @@ pandas = "^2.3.1"
 requests = "^2.32.4"
 streamlit = "^1.47.0"
 pycountry = "^24.6.1"
+datetime = "^5.5"
+folium = "^0.20.0"
+streamlit-folium = "^0.25.0"
+pytz = "^2025.2"
+plotly-express = "^0.4.1"
+seaborn = "^0.13.2"
 
 
 [build-system]

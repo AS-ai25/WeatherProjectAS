@@ -1,0 +1,9 @@
+streamlit
+folium
+streamlit-folium
+pandas
+requests
+pytz
+plotly
+matplotlib
+seaborn
