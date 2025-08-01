@@ -253,7 +253,7 @@ fig.add_trace(
 
 # Add min temperature line plot (left y-axis)
 fig.add_trace(
-    go.Scatter(x=df["time"], y=df["temperature_2m_min"], name="Min Temp (°{temp_sym})", mode="lines+markers"),
+    go.Scatter(x=df["time"], y=df["temperature_2m_min"], name=f"Min Temp (°{temp_sym})", mode="lines+markers"),
     secondary_y=False,
 )
 
@@ -271,7 +271,7 @@ fig.update_layout(
 )
 
 # Set y-axis titles for temperature and rainfall
-fig.update_yaxes(title_text="Temperature (°{temp_sym})", secondary_y=False)
+fig.update_yaxes(title_text=f"Temperature (°{temp_sym})", secondary_y=False)
 fig.update_yaxes(title_text="Rainfall (mm)", secondary_y=True)
 
 # Display the Plotly figure in Streamlit with container width
