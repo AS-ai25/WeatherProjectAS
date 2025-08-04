@@ -159,23 +159,6 @@ st.image(url_icon, caption="Weather Icon")
 actual_cite_time = dt.datetime.now(dt.timezone.utc) + dt.timedelta(seconds=city_timezone)
 actual_cite_time1 = actual_cite_time.strftime("%H:%M:%S %A %d-%m-%Y ")
 
-###############################
-
-# Function to get the user's timezone from IP using external API
-def get_user_timezone():
-    try:
-        response = requests.get("https://ipapi.co/json/")
-        data = response.json()
-        return data.get("timezone")
-    except Exception as e:
-        return f"Error{e}"
-
-# Get user timezone string and current user local time with timezone info
-timezone = get_user_timezone()
-tz = pytz.timezone(timezone)
-time_now_user = dt.datetime.now(tz).strftime("%A, %Y-%m-%d %H:%M [UTC %Z]")
-
-###############################
 
 # Predefined recommendation texts per weather condition
 weather_texts = {
@@ -198,8 +181,6 @@ weather_texts = {
 
 # Display current city time and weather description with temperature
 st.write(f"The time now in {city} is {actual_cite_time1} and the weather there is {weather_description}, {main_temp} {temp_sym}.\n")
-
-###################################################################
 
 
 
@@ -277,9 +258,6 @@ fig.update_yaxes(title_text="Rainfall (mm)", secondary_y=True)
 # Display the Plotly figure in Streamlit with container width
 st.plotly_chart(fig, use_container_width=True)
 
-#######################################################################
-
-
 
 # Create two equal columns for side-by-side plots
 col1, col2 = st.columns(2)
@@ -300,7 +278,6 @@ with col2:
     ax2.set_title("KDE of Max Temperature by Year")
     st.pyplot(fig2)
 
-######################################################################
 
 # Show header and explanation for recommended places based on weather
 st.write("\n\n## Interesting palaces to explorer")
@@ -493,6 +470,16 @@ m.save("places_map.html")
 st.title("Local map")
 folium_static(m)
 
+#Get user timezone string and current user local time with timezone info
+timezone_u = get_user_timezone()
+if timezone_u is None:
+    st.warning("Could not detect your timezone, using default UTC.")
+    timezone_u = "UTC"
+tz = pytz.timezone(timezone_u)
+time_now_user = dt.datetime.now(tz).strftime("%A, %Y-%m-%d %H:%M [UTC %z]")
+
 # Display user timezone and local time in the app
-st.write(f"User time Zone is {timezone}. {time_now_user}")
+st.write(f"User time Zone is {timezone_u}. {time_now_user}")
+
+
 
