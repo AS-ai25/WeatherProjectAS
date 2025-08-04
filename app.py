@@ -471,6 +471,14 @@ st.title("Local map")
 folium_static(m)
 
 #Get user timezone string and current user local time with timezone info
+def get_user_timezone():
+    try:
+        response = requests.get("https://ipapi.co/json/")
+        data = response.json()
+        return data.get("timezone")
+    except Exception as e:
+        return None 
+        
 timezone_u = get_user_timezone()
 if timezone_u is None:
     st.warning("Could not detect your timezone, using default UTC.")
