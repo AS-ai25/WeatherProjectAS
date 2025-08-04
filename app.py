@@ -159,6 +159,10 @@ st.image(url_icon, caption="Weather Icon")
 actual_cite_time = dt.datetime.now(dt.timezone.utc) + dt.timedelta(seconds=city_timezone)
 actual_cite_time1 = actual_cite_time.strftime("%H:%M:%S %A %d-%m-%Y ")
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3f3aeafa9aa71752f1e9480400066ee51bbd79d5
 # Predefined recommendation texts per weather condition
 weather_texts = {
     "Thunderstorm": "Stormy weather calls for indoor fun – visit a museum, relax in a spa, or enjoy a movie.",
@@ -180,8 +184,6 @@ weather_texts = {
 
 # Display current city time and weather description with temperature
 st.write(f"The time now in {city} is {actual_cite_time1} and the weather there is {weather_description}, {main_temp} {temp_sym}.\n")
-
-###################################################################
 
 
 
@@ -207,12 +209,18 @@ data = res.json()
 # Create DataFrame from daily weather data
 df = pd.DataFrame(data["daily"])
 df["time"] = pd.to_datetime(df["time"])
+<<<<<<< HEAD
 df['imperial_max'] = df['temperature_2m_max'] * 9/5 + 32
 df['imperial_min'] = df['temperature_2m_min'] * 9/5 + 32
 if units == "imperial":
     df['temperature_2m_max'] = df['temperature_2m_max'] * 9 / 5 + 32
     df['temperature_2m_min'] = df['temperature_2m_min'] * 9 / 5 + 32
 
+=======
+if units == "imperial":
+    df['temperature_2m_max'] = df['temperature_2m_max'] * 9 / 5 + 32
+    df['temperature_2m_min'] = df['temperature_2m_min'] * 9 / 5 + 32
+>>>>>>> 3f3aeafa9aa71752f1e9480400066ee51bbd79d5
 
 # Create copies for monthly and yearly analyses
 df_m = df
@@ -232,13 +240,21 @@ fig = make_subplots(specs=[[{"secondary_y": True}]])
 
 # Add max temperature line plot (left y-axis)
 fig.add_trace(
+<<<<<<< HEAD
     go.Scatter(x=df["time"], y=df["temperature_2m_max"], name=f"Max Temp ({temp_sym})", mode="lines+markers"),
+=======
+    go.Scatter(x=df["time"], y=df["temperature_2m_max"], name=f"Max Temp (°{temp_sym})", mode="lines+markers"),
+>>>>>>> 3f3aeafa9aa71752f1e9480400066ee51bbd79d5
     secondary_y=False,
 )
 
 # Add min temperature line plot (left y-axis)
 fig.add_trace(
+<<<<<<< HEAD
     go.Scatter(x=df["time"], y=df["temperature_2m_min"], name=f"Min Temp ({temp_sym})", mode="lines+markers"),
+=======
+    go.Scatter(x=df["time"], y=df["temperature_2m_min"], name=f"Min Temp (°{temp_sym})", mode="lines+markers"),
+>>>>>>> 3f3aeafa9aa71752f1e9480400066ee51bbd79d5
     secondary_y=False,
 )
 
@@ -256,14 +272,15 @@ fig.update_layout(
 )
 
 # Set y-axis titles for temperature and rainfall
+<<<<<<< HEAD
 fig.update_yaxes(title_text=f"Temperature ({temp_sym})", secondary_y=False)
+=======
+fig.update_yaxes(title_text=f"Temperature (°{temp_sym})", secondary_y=False)
+>>>>>>> 3f3aeafa9aa71752f1e9480400066ee51bbd79d5
 fig.update_yaxes(title_text="Rainfall (mm)", secondary_y=True)
 
 # Display the Plotly figure in Streamlit with container width
 st.plotly_chart(fig, use_container_width=True)
-
-#######################################################################
-
 
 
 # Create two equal columns for side-by-side plots
@@ -285,7 +302,6 @@ with col2:
     ax2.set_title("KDE of Max Temperature by Year")
     st.pyplot(fig2)
 
-######################################################################
 
 # Show header and explanation for recommended places based on weather
 st.write("\n\n## Interesting palaces to explorer")
@@ -478,15 +494,20 @@ m.save("places_map.html")
 st.title("Local map")
 folium_static(m)
 
+<<<<<<< HEAD
 ###############################
 
 # Function to get the user's timezone from IP using external API
+=======
+#Get user timezone string and current user local time with timezone info
+>>>>>>> 3f3aeafa9aa71752f1e9480400066ee51bbd79d5
 def get_user_timezone():
     try:
         response = requests.get("https://ipapi.co/json/")
         data = response.json()
         return data.get("timezone")
     except Exception as e:
+<<<<<<< HEAD
         return f"Error{e}"
 
 # Get user timezone string and current user local time with timezone info
@@ -498,6 +519,10 @@ def get_user_timezone():
     except Exception as e:
         return None
 
+=======
+        return None 
+        
+>>>>>>> 3f3aeafa9aa71752f1e9480400066ee51bbd79d5
 timezone_u = get_user_timezone()
 if timezone_u is None:
     st.warning("Could not detect your timezone, using default UTC.")
@@ -507,4 +532,9 @@ time_now_user = dt.datetime.now(tz).strftime("%A, %Y-%m-%d %H:%M [UTC %z]")
 
 # Display user timezone and local time in the app
 st.write(f"User time Zone is {timezone_u}. {time_now_user}")
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 3f3aeafa9aa71752f1e9480400066ee51bbd79d5
 
