@@ -147,11 +147,6 @@ if settings["units"] == 'metric':
 if settings["units"] == 'imperial':
     temp_sym = 'F'
 
-# main_temp_max = weather['main']['temp_max']
-# main_temp_min = weather['main']['temp_min']
-# wind_speed = weather['wind']['speed']
-# clouds_all = weather['clouds']['all']
-# city_time = weather['dt']
 city_timezone = weather['timezone']
 
 # Get weather icon URL and display
