@@ -268,7 +268,7 @@ with col1:
 
 # ===== KDE plot of max temperature by year in right column =====
 with col2:
-    st.write("##### Max tem last 10 years")
+    st.write("##### Max Tem last 10 years")
     fig2, ax2 = plt.subplots(figsize=(6, 4))
     sns.kdeplot(data=df_y, x="temperature_2m_max", hue="year", ax=ax2)
     ax2.set_title("KDE of Max Temperature by Year")
@@ -487,4 +487,4 @@ tz = pytz.timezone(timezone_u)
 time_now_user = dt.datetime.now(tz).strftime("%A, %Y-%m-%d %H:%M [UTC %z]")
 
 # Display user timezone and local time in the app
-st.write(f"User time Zone is {timezone_u}. {time_now_user}")
+st.write(f"App user time Zone is {timezone_u}. {time_now_user}")
